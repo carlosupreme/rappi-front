@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import { useCartStore } from '../store/cartStore'
 import { createOrder } from '../api/client'
+import type { CartItem } from '../types'
 
 export default function CartDrawer() {
   const { items, isOpen, toggleCart, removeItem, updateQty, clearCart, total } = useCartStore()
@@ -30,7 +31,7 @@ export default function CartDrawer() {
     mutation.mutate({
       businessId,
       ...form,
-      items: items.map(i => ({ productId: i.product.id, quantity: i.quantity })),
+      items: items.map((i: CartItem) => ({ productId: i.product.id, quantity: i.quantity })),
     })
   }
 
@@ -60,7 +61,7 @@ export default function CartDrawer() {
         ) : !showCheckout ? (
           <>
             <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
-              {items.map(item => (
+              {items.map((item: CartItem) => (
                 <div key={item.product.id} className="flex gap-3 items-center">
                   <img
                     src={item.product.imageUrl}

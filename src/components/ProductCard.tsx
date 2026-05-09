@@ -1,4 +1,4 @@
-import type { Product } from '../types'
+import type { Product, CartItem } from '../types'
 import { useCartStore } from '../store/cartStore'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 export default function ProductCard({ product, businessId, businessName }: Props) {
   const { items, addItem, updateQty } = useCartStore()
-  const cartItem = items.find(i => i.product.id === product.id)
+  const cartItem = items.find((i: CartItem) => i.product.id === product.id)
 
   return (
     <div className="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
