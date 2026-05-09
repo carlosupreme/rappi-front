@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #ff6b35;
+  --color-brand-dark: #e55a28;
+}
+
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; background: #f7f7f7; }
